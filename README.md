@@ -29,19 +29,10 @@
 
 * 详细说明请访问： [Zdir 实用的目录列表程序](https://www.xiaoz.me/archives/10465)
 
-### 注意事项
-* ~~不要使用中文命名目录/文件，否则可能发生不可预料的错误。~~
-* 2018.08.30 已解决中文命名问题（仅在Linux下做过测试）
 
-### Demo
-* [http://soft.xiaoz.org/](http://soft.xiaoz.org/)
+### 魔改优化
+* 调整原作者的目录层级
+* 现在您只需要将存放的文件夹信息和最外层index.php 保持同一层级即可
+* 修复了原作者在对目录的处理时对php ./ 目录的错误处理
+* 删除了原作者的滚动通知消息
 
-### 获取捐赠版
-扫描下方二维码，并留言您的网址可获取捐赠版，捐赠版可去除底部版权。
-
-![](https://imgurl.org/upload/1712/cb349aa4a1b95997.png)
-
-### 联系我
-* Blog：[https://www.xiaoz.me/](https://www.xiaoz.me/)
-* QQ:337003006
-* 社区支持：[https://ttt.sh/](https://ttt.sh/category/15/)
