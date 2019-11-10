@@ -1,7 +1,7 @@
 <?php
 	@$admin = $_GET['admin'];
 	//获取当前目录
-	$thedir = __DIR__;
+ $thedir = $loaddir;
 	$thedir = str_replace("\\",'/',$thedir);
 	$thedir = str_replace("functions",'',$thedir);
 	
@@ -82,11 +82,12 @@
 	function updir($dir){
 		//分割目录
 		$dirarr = explode("/",$dir);
+		
 		$dirnum = count($dirarr);
 		
 		#var_dump($dirarr);
 		if($dirnum == 2) {
-			$updir = 'index.php';
+			$updir = '/';
 		}
 		else{
 			$updir = '';
@@ -96,7 +97,7 @@
 				$updir = $updir.'/'.$dirarr[$i];
 				
 			}
-			$updir = 'index.php?dir='.$updir;
+			$updir = '?dir='.$updir;
 		}
 		return $updir;
 	}
@@ -106,14 +107,14 @@
 ?>
 <?php
 	//载入页头
-	include_once("./template/header.php")
+	include_once("zdir/template/header.php")
 ?>
     <!--面包屑导航-->
 	<div id="navigation" class = "layui-hide-xs">
 		<div class="layui-container">
 			<div class="layui-row">
 				<!--滚动消息-->
-				<div id = "msg" class="layui-col-lg12">
+				-<div id = "msg" class="layui-col-lg12">
 					<i class="layui-icon layui-icon-notice" style="color: #FF5722;font-weight:bold;"></i> 
 					<span id = "msg-content"></span>
 				</div>
@@ -174,8 +175,7 @@
 					  </thead>
 					  <tbody>
 					    <?php foreach( $listdir as $showdir ) {
-						    //防止中文乱码
-						    //$showdir = iconv('gb2312' , 'utf-8' , $showdir );
+	
 						    $fullpath = $thedir.'/'.$dir.'/'.$showdir;
 						    $fullpath = str_replace("\\","\/",$fullpath);
 						    $fullpath = str_replace("//","/",$fullpath);
@@ -189,6 +189,7 @@
 						    if( strripos($showdir,".php") ) {
 							    continue;
 						    }
+						    if ($showdir==".") {continue;}
 						    //判读文件是否是目录,当前路径 + 获取到的路径 + 遍历后的目录
 						    if(is_dir($thedir.'/'.$dir.'/'.$showdir)){
 							    $suffix = '';
@@ -197,7 +198,7 @@
 								    $url = $updir;
 							    }
 							    else{
-								    $url = "./index.php?dir=".$dir.'/'.$showdir;
+								    $url = "./?dir=".$dir.'/'.$showdir;
 							    }
 							    
 							    $ico = "fa fa-folder-open";
@@ -238,7 +239,7 @@
 								    $url = $updir;
 							    }
 							    else{
-								    $url = "./index.php?dir=".$dir.'/'.$showdir;
+								    $url = "./?dir=".$dir.'/'.$showdir;
 							    }
 							    
 							    $ico = "fa fa-folder-open";
@@ -260,7 +261,9 @@
 								<a href="<?php echo $url ?>" id = "url<?php echo $i; ?>"><i class="<?php echo $ico; ?>"></i> <?php echo $showdir; ?></a>
 							   	<!--.exe文件END-->
 							   	<?php }else{ ?>
-							    <a href="<?php echo $url ?>" id = "url<?php echo $i; ?>"><i class="<?php echo $ico; ?>"></i> <?php echo $showdir; ?></a>
+							    <a href="<?php echo $url ?>" id = "url<?php echo $i; ?>"><i class="<?php echo $ico; ?>"></i> 
+							    <?php if($showdir!="..") echo $showdir;  else echo "../返回上级目录"; ?>
+							    </a>
 							    <?php } ?>
 						    </td>
 						    <td id = "info" class = "layui-hide-xs">
@@ -288,7 +291,7 @@
 									<a href="javascript:;" onclick = "qrcode('<?php echo $showdir; ?>','<?php echo $url; ?>')" title = "显示二维码"><i class="fa fa-qrcode" aria-hidden="true"></i></a>
 							    <?php } ?>
 						    </td>
-						    <td class = "layui-hide-xs"><?php echo $ctime; ?></td>
+						    <td class = "layui-hide-xs"><?php  if($showdir!="..") echo $ctime; ?></td>
 						    <td><?php echo $fsize; ?></td>
 						    <td class = "layui-hide-xs">
 							    <?php if($fsize != '-'){ ?>
@@ -312,5 +315,5 @@
 	</div>
 <?php
 	//载入页脚
-	include_once("./template/footer.php");
+	include_once("zdir/template/footer.php");
 ?>

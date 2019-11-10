@@ -22,13 +22,13 @@ function tree($directory,$ignore) {
                 //递归读取目录 
                 tree("$directory/$file",$ignore);
             } elseif ($file != "." && $file != "..") {
-	            $uri =  $_SERVER["REQUEST_URI"];
+	            $uri =  "";
 				$uri = dirname($uri);
 				$uri = str_replace("/functions","",$uri);
 				//echo $uri;
 				//exit;
 	            $filepath = "$directory/$file";
-	            $url = $uri.'/'.$directory.'/'.$file;
+	            $url = $uri.$directory.'/'.$file;
 	            $url = str_replace("../","",$url);
                 echo "<li><i class='fa fa-file-text-o'></i> <a href = '$url' target = '_blank'>$url</a></li>\n";
             }
@@ -43,4 +43,4 @@ function tree($directory,$ignore) {
 
 } 
 //开始运行
-tree("..",$ignore); 
+tree("../../",$ignore); 

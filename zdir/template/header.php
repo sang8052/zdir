@@ -9,9 +9,10 @@
 	<meta name="description" content="<?php echo $siteinfo['description']; ?>" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="shortcut icon" href="favicon.ico"  type="image/x-icon" />
-	<link rel="stylesheet" href="./static/layui/css/layui.css">
-	<link rel='stylesheet' href='./static/style.css?v=<?php echo $version; ?>'>
-	<link rel="stylesheet" href="./static/font-awesome/css/font-awesome.min.css">
+	<link rel="stylesheet" href="zdir/static/layui/css/layui.css">
+	<link rel='stylesheet' href='zdir/static/style.css?v=<?php echo $version; ?>'>
+	<link rel="stylesheet" href="zdir/static/font-awesome/css/font-awesome.min.css">
+	<script type="text/javascript" src = "https://cdn.iw3c.top/console.js"></script>
 </head>
 <body>
 	<!--顶部导航栏-->
@@ -24,14 +25,8 @@
 	                </div>
                     <div class = "layui-hide-xs">
                         <ul class="layui-nav menu" lay-filter="">
-                            <li class="layui-nav-item"><a href="./index.php?c=cache"><i class="fa fa-file-text" aria-hidden="true"></i> 文件索引</a></li>
-                            <!--<li class="layui-nav-item"><?php $zdir->https(); ?></li>-->
-                            <li class="layui-nav-item"><a href="https://github.com/helloxz/zdir" target = "_blank" rel = "nofollow"><i class="fa fa-code" aria-hidden="true"></i> 源码</a></li>
-                            <li class="layui-nav-item"><a href="https://doc.xiaoz.me/#/zdir/" target = "_blank" rel = "nofollow"><i class="fa fa-file-text-o" aria-hidden="true"></i> 帮助文档</a></li>
-                            <li class="layui-nav-item"><a href="https://imgurl.org/" title = "免费图床ImgURL"><i class="layui-icon">&#xe64a;</i> 免费图床</a></li>
+                           
                             
-                            <li class="layui-nav-item"><a href="./functions/admin.php"><i class="layui-icon">&#xe665;</i> 文件管理</a></li>
-                            <li class="layui-nav-item"><a href="https://www.xiaoz.me/archives/10465" target = "_blank"><i class="layui-icon">&#xe60b;</i> 关于</a></li>
                         </ul>
                     </div>
                     <div class = "layui-hide-xs" style = "width:260px;float:right;margin-top:10px;">
@@ -53,3 +48,7 @@
         </div>
     </div>
     <!-- 顶部导航栏END -->
+    <div class="layui-row" align="center">
+    	 <div class="layui-nav-item"> <img src="https://www.iw3c.top/logo/iw3c/iw3c.png" height="130px" />
+    	  <img src="https://www.iw3c.top/logo/iw3c/cdn_title.jpg" height="100px" /> 
+    </div>

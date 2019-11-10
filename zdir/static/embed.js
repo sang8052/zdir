@@ -38,20 +38,21 @@ function copy(url){
 
 	switch(suffix){
 		case 'js':
-			url = "<script src = '" + url + "'></script>";
+			url = "<script type=\"text/javascript\" src = \"" + url + "\"></script>";
 			break;
 		case 'css':
-			url = "<link rel='stylesheet' href='" + url + "'>";
+			url = "<link rel=\"stylesheet\" href=\"" + url + "\">";
 		default:
 			//如果是图片
 			if((suffix == 'jpg') || (suffix == 'jpeg') || (suffix == 'gif') || (suffix == 'bmp') || (suffix == 'png')){
-				url = "<img src = '" + url + "' />";
+				url = "<img src = \"" + url + "\" />";
 			}
 			else{
 				url = url;
 			}
 		break;
 	}
+	
 	
 	
 	var copy = new clipBoard(document.getElementById('list'), {
@@ -87,14 +88,14 @@ function scopy(url){
 
 	switch(suffix){
 		case 'js':
-			url = "<script src = '" + url + "'></script>";
+			url = "<script type=\"text/javascript\" src = \"" + url + "\"></script>";
 			break;
 		case 'css':
-			url = "<link rel='stylesheet' href='" + url + "'>";
+			url = "<link rel=\"stylesheet\" href=\"" + url + "\">";
 		default:
 			//如果是图片
 			if((suffix == 'jpg') || (suffix == 'jpeg') || (suffix == 'gif') || (suffix == 'bmp') || (suffix == 'png')){
-				url = "<img src = '" + url + "' />";
+				url = "<img src = \"" + url + "\" />";
 			}
 			else{
 				url = url;
@@ -131,7 +132,7 @@ function viewmd(url){
 }
 //新版markdown查看器
 function newmd(url){
-	var url = "./functions/viewmd.php?file=" + url;
+	var url = "zdir/functions/viewmd.php?file=" + url;
 	layer.open({
 		title:'MarkDown查看器',
 	  	type: 2, 
@@ -142,7 +143,7 @@ function newmd(url){
 //播放视频文件
 function video(url){
 	
-	var videourl = "./functions/video.php?url=" + url;
+	var videourl = "zdir/functions/video.php?url=" + url;
 	//layer.msg(videourl);
 	layer.open({
 		title:url,
@@ -154,7 +155,7 @@ function video(url){
 
 //查看文本文档
 function viewtext(url){
-	var url = "./functions/viewtext.php?file=" + url;
+	var url = "zdir/functions/viewtext.php?file=" + url;
 	layer.open({
 		title:'Zdir文本查看器',
 	  	type: 2, 
@@ -198,7 +199,7 @@ function filehash(name,path){
 	var file = path;
 	
 	//alert(file);
-	$.post("./functions/hash.php",{file:file},function(data,status){
+	$.post("zdir/functions/hash.php",{file:file},function(data,status){
 		var fileinfo = eval('(' + data + ')');
 		if(fileinfo.code == 1){
 			layer.open({
@@ -263,7 +264,7 @@ function delfile(id,filename,filepath){
 		formType: 1,
 		title: '请输入密码删除 - ' + filename
 	}, function(value, index, elem){
-		$.post('./functions/delfile.php',{filepath:filepath,password:value},function(data,status){
+		$.post('zdir/functions/delfile.php',{filepath:filepath,password:value},function(data,status){
 			var redata = eval('(' + data + ')');
 			if(redata.code == 1){
 				$("#" + id).remove();

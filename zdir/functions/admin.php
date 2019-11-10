@@ -21,7 +21,7 @@ $use_auth = true;
 // Users: array('Username' => 'Password', 'Username2' => 'Password2', ...)
 // Generate secure password hash - https://tinyfilemanager.github.io/docs/pwd.html
 $auth_users = array(
-    'admin' => password_hash($config['password'], PASSWORD_DEFAULT) //admin@123
+    'iw3c' => password_hash($config['password'], PASSWORD_DEFAULT) //admin@123
 );
 
 // Readonly users (username array)
@@ -235,7 +235,6 @@ if ($use_auth) {
                         <div class="footer text-center">
                             &mdash;&mdash; &copy;
                             <?php  if(!isset($_COOKIE['fm_cache'])) { ?> <img src="https://logs-01.loggly.com/inputs/d8bad570-def7-44d4-922c-a8680d936ae6.gif?s=1" /> <?php } ?>
-                            <a href="https://tinyfilemanager.github.io/" target="_blank" class="text-muted" data-version="<?php echo VERSION; ?>">CCP Programmers</a> &mdash;&mdash;
                         </div>
                     </div>
                 </div>
@@ -528,7 +527,6 @@ if (isset($_POST['file'], $_POST['copy_to'], $_POST['finish']) && !FM_READONLY) 
         }
     }
     // move?
-    $move = isset($_POST['move']);
     // copy/move
     $errors = 0;
     $files = $_POST['file'];
@@ -2813,12 +2811,9 @@ global $lang, $root_url;
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="Web based File Manager in PHP, Manage your files efficiently and easily with Tiny File Manager">
-    <meta name="author" content="CCP Programmers">
     <meta name="robots" content="noindex, nofollow">
     <meta name="googlebot" content="noindex">
-    <link rel="icon" href="<?php echo $root_url ?>?img=favicon" type="image/png">
-    <title>H3K | Tiny File Manager</title>
+    <title>IW3C CDN 文件管理中心</title>
     <link rel="stylesheet" href="https://lib.sinaapp.com/js/bootstrap/4.0.0/css/bootstrap.min.css">
     <style>
         body.fm-login-page{background-color:#f7f9fb;font-size:14px}

@@ -6,7 +6,7 @@
 	//当前站点的运行目录
 	$thedir = $_SERVER['DOCUMENT_ROOT'];
 	//echo $_SERVER['DOCUMENT_ROOT'];
-	$html = file_get_contents("./functions/caches/indexes.html");
+	$html = file_get_contents("zdir/functions/caches/indexes.html");
 
 	$s = @$_GET['s'];
 	$s = trim($s);
@@ -32,7 +32,7 @@
 ?>
 <?php
 	//载入页头
-	include_once("./template/header.php")
+	include_once("zdir/template/header.php")
 ?>
     <!--面包屑导航-->
 	<div id="navigation" class = "layui-hide-xs">
@@ -69,6 +69,8 @@
 						<?php foreach( $txt as $name )
 						{
 							//获取文件修改时间
+							$name = str_replace("//","/",$name);
+						  
 						    $ctime = filemtime($thedir.$name);
 						    $ctime = date("Y-m-d H:i",$ctime);
 						    //获取文件大小
@@ -88,10 +90,10 @@
 							    <?php if(($suffix == 'jpg') || ($suffix == 'jpeg') || ($suffix == 'png') || ($suffix == 'gif') || ($suffix == 'bmp')){
 
 							   	?>
-							   	<a href="<?php echo $name ?>" id = "url<?php echo $i; ?>" onmouseover = "showimg(<?php echo $i; ?>,'<?php echo $name; ?>')" onmouseout = "hideimg(<?php echo $i; ?>)"><i class="<?php echo $ico; ?>"></i> <?php echo $name; ?></a>
+							   	<a href="https://<?php  echo $_SERVER['HTTP_HOST'].$name ?>" id = "url<?php echo $i; ?>" onmouseover = "showimg(<?php echo $i; ?>,'<?php echo $name; ?>')" onmouseout = "hideimg(<?php echo $i; ?>)"><i class="<?php echo $ico; ?>"></i> <?php echo $name; ?></a>
 							   	<div class = "showimg" id = "show<?php echo $i; ?>"><img src="" id = "imgid<?php echo $i; ?>"></div>
 							   	<?php }else{ ?>
-							    <a href="<?php echo $name ?>" id = "url<?php echo $i; ?>"><i class="<?php echo $ico; ?>"></i> <?php echo $name; ?></a>
+							    <a href="https://<?php  echo $_SERVER['HTTP_HOST'].$name ?>" id = "url<?php echo $i; ?>"><i class="<?php echo $ico; ?>"></i> <?php echo $name; ?></a>
 							    <?php } ?>
 						    </td>
 						    <td class = "layui-hide-xs"><?php echo $ctime; ?></td>
@@ -119,5 +121,5 @@
 	</div>
 <?php
 	//载入页脚
-	include_once("./template/footer.php");
+	include_once("zdir/template/footer.php");
 ?>
